@@ -12,9 +12,9 @@ public class ShowCommand extends AbstractCommand {
     }
 
     @Override
-    public boolean execute(String argument) {
+    public boolean execute(String arg) {
         try {
-            if (!argument.isEmpty()) throw new WrongAmountOfElementsException();
+            if (!arg.isEmpty()) throw new WrongAmountOfElementsException();
             System.out.println(collectionHandler);
             return true;
         } catch (WrongAmountOfElementsException exception) {

@@ -16,11 +16,11 @@ public class RemoveByIdCommand extends AbstractCommand {
     }
 
     @Override
-    public boolean execute(String argument) {
+    public boolean execute(String arg) {
         try {
-            if (argument.isEmpty()) throw new WrongAmountOfElementsException();
+            if (arg.isEmpty()) throw new WrongAmountOfElementsException();
             if (collectionHandler.collectionSize() == 0) throw new CollectionIsEmptyException();
-            Long id = Long.parseLong(argument);
+            Long id = Long.parseLong(arg);
             SpaceMarine marineToRemove = collectionHandler.getById(id);
             if (marineToRemove == null) throw new MarineNotFoundException();
             collectionHandler.removeFromCollection(marineToRemove);

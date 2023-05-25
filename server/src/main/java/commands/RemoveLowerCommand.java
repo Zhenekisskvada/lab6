@@ -9,12 +9,12 @@ import utils.MarineAsker;
 
 import java.time.LocalDateTime;
 
-public class AddIfMinCommand extends AbstractCommand {
+public class RemoveLowerCommand extends AbstractCommand {
     private CollectionHandler collectionHandler;
     private MarineAsker marineAsker;
 
-    public AddIfMinCommand(CollectionHandler collectionHandler, MarineAsker marineAsker) {
-        super("add_if_min {element}", "add a new element if its value is less than that of the smallest");
+    public RemoveLowerCommand(CollectionHandler collectionHandler, MarineAsker marineAsker) {
+        super("remove_lower {element}", "remove from the collection all elements smaller than the given one");
         this.collectionHandler = collectionHandler;
         this.marineAsker = marineAsker;
     }
@@ -23,7 +23,7 @@ public class AddIfMinCommand extends AbstractCommand {
     public boolean execute(String arg) {
         try {
             if (!arg.isEmpty()) throw new WrongAmountOfElementsException();
-            SpaceMarine marineToAdd = new SpaceMarine(
+            SpaceMarine marineToCompare = new SpaceMarine(
                     collectionHandler.generateNextId(),
                     marineAsker.askName(),
                     LocalDateTime.now(),
@@ -34,16 +34,16 @@ public class AddIfMinCommand extends AbstractCommand {
                     marineAsker.askMeleeWeapon(),
                     marineAsker.askChapter()
             );
-            if (collectionHandler.collectionSize() == 0 ||
-                    marineToAdd.healthCompareTo(collectionHandler.getById(collectionHandler.getMin()) ) < 0) {
-                collectionHandler.addToCollection(marineToAdd);
-                Console.println("Soldier successfully added!");
+            if (collectionHandler.enumeration(marineToCompare.getHealth()) == 1) {
+                Console.println("Soldiers successfully removed!");
                 return true;
-            } else Console.printerror("The value of the soldier is greater than the value of the smallest of the soldiers!");
+            } else if (collectionHandler.enumeration(marineToCompare.getHealth()) == 2) {
+                Console.printerror("The value of the soldier is less than all the soldiers in the collection!");
+            } else Console.printerror("Collection is empty!");
         } catch (WrongAmountOfElementsException exception) {
             Console.println("usage: '" + getName() + "'");
         } catch (IncorrectInputInScriptException exception) {}
         return false;
     }
-
 }
+

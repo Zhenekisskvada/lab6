@@ -17,9 +17,9 @@ public class FilterStartsWithNameCommand extends AbstractCommand {
     }
 
     @Override
-    public boolean execute(String argument) {
+    public boolean execute(String arg) {
         try {
-            if (argument.isEmpty()) throw new WrongAmountOfElementsException();
+            if (arg.isEmpty()) throw new WrongAmountOfElementsException();
             HashSet<SpaceMarine> marinesNames = collectionHandler.namestart(argument);
             if (!marinesNames.isEmpty()) {
                 for(SpaceMarine marine: marinesNames) Console.println(marine.getName());

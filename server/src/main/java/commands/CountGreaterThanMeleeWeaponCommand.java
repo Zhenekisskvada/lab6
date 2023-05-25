@@ -18,9 +18,9 @@ public class CountGreaterThanMeleeWeaponCommand extends AbstractCommand {
     }
 
     @Override
-    public boolean execute(String argument) {
+    public boolean execute(String arg) {
         try {
-            if (argument == null) throw new WrongAmountOfElementsException();
+            if (arg == null) throw new WrongAmountOfElementsException();
             MeleeWeapon MeleeWep = MeleeWeapon.valueOf(argument.toUpperCase());
             int quantityMelee = 0;
             HashSet<SpaceMarine> marinesMelee = collectionHandler.enumerationMelee(MeleeWep);

@@ -14,9 +14,9 @@ public class InfoCommand extends AbstractCommand {
     }
 
     @Override
-    public boolean execute(String argument) {
+    public boolean execute(String arg) {
         try {
-            if (!argument.isEmpty()) throw new WrongAmountOfElementsException();
+            if (!arg.isEmpty()) throw new WrongAmountOfElementsException();
             LocalDateTime lastInitTime = collectionHandler.getInitDateTime();
             String lastInitTimeString = (lastInitTime == null) ? "initialization has not yet taken place in this session" :
                     lastInitTime.toLocalDate().toString() + " " + lastInitTime.toLocalTime().toString();

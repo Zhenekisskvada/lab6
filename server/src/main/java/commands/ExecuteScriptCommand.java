@@ -9,9 +9,9 @@ public class ExecuteScriptCommand extends AbstractCommand {
     }
 
     @Override
-    public boolean execute(String argument) {
+    public boolean execute(String arg) {
         try {
-            if (argument.isEmpty()) throw new WrongAmountOfElementsException();
+            if (arg.isEmpty()) throw new WrongAmountOfElementsException();
             Console.println("Executing a script '" + argument + "'...");
             return true;
         } catch (WrongAmountOfElementsException exception) {

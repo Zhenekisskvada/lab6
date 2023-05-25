@@ -10,9 +10,9 @@ public class ExitCommand extends AbstractCommand {
     }
 
     @Override
-    public boolean execute(String argument) {
+    public boolean execute(String arg) {
         try {
-            if (!argument.isEmpty()) throw new WrongAmountOfElementsException();
+            if (!arg.isEmpty()) throw new WrongAmountOfElementsException();
             return true;
         } catch (WrongAmountOfElementsException exception) {
             Console.println("usage: '" + getName() + "'");

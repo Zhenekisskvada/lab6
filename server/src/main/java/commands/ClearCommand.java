@@ -13,7 +13,7 @@ public class ClearCommand extends AbstractCommand {
     }
 
     @Override
-    public boolean execute(String argument) {
+    public boolean execute(String arg) {
         try {
             if (!argument.isEmpty()) throw new WrongAmountOfElementsException();
             collectionHandler.clearCollection();
